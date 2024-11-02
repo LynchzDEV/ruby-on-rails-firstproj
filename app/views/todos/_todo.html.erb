@@ -1,12 +1,15 @@
-<div id="<%= dom_id todo %>">
-  <p>
-    <strong>Title:</strong>
-    <%= todo.title %>
-  </p>
-
-  <p>
-    <strong>Completed:</strong>
-    <%= todo.completed %>
-  </p>
-
+<div id="<%= dom_id todo %>" class="mb-4">
+    <div class="flex flex-row gap-4 min-w-full ">
+        <div class="flex items-center justify-start">
+            Title:
+            <h2 class="text-xl font-semibold text-gray-900 px-2.5 items-center content-center"><%= todo.title %></h2>
+        </div>
+    </div>
+    <div>
+        Status:
+    <span class="<%= todo.completed == 1 ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' %> inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium">
+        <%= todo.completed == 1 ? 'Completed' : 'Pending' %>
+        <%#%>
+    </span>
+    </div>
 </div>

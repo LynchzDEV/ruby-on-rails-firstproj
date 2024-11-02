@@ -1,12 +1,16 @@
-<% content_for :title, "Editing todo" %>
+<div class="max-w-2xl mx-auto">
+  <% content_for :title, "Edit todo" %>
+  <h1 class="text-3xl font-bold text-gray-900 mb-8">Edit todo</h1>
 
-<h1>Editing todo</h1>
+  <div class="bg-white shadow rounded-lg p-6 mb-8">
+    <%= render "form", todo: @todo %>
+  </div>
 
-<%= render "form", todo: @todo %>
+  <div class="flex items-center space-x-4">
+    <%= link_to "View todo", @todo,
+        class: "inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
 
-<br>
-
-<div>
-  <%= link_to "Show this todo", @todo %> |
-  <%= link_to "Back to todos", todos_path %>
+    <%= link_to "Back to todos", todos_path,
+        class: "inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
+  </div>
 </div>
