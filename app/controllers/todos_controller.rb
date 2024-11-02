@@ -57,6 +57,12 @@ class TodosController < ApplicationController
     end
   end
 
+  def search
+    query = params[:query]
+    @todos = Todo.where("title LIKE ?", "%#{query}%")
+    render :index
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_todo
