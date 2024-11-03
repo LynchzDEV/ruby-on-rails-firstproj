@@ -6,10 +6,6 @@
     </div>
   <% end %>
 
-  <div>
-
-  </div>
-
   <div class="mb-4 justify-between">
       <%=render "search"%>
   </div>
@@ -17,15 +13,33 @@
   <% content_for :title, "Todos" %>
   <div class="flex justify-between">
     <h1 class="text-3xl font-bold text-gray-900">Todos</h1>
-    <%= link_to "New todo", new_todo_path,
-        class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
+    <div class="flex gap-2">
+      <!-- <button data-controller="modal" data-action="click->modal#open"
+          class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+        New todo
+      </button> -->
+
+      <button data-bs-toggle="modal" data-bs-target="#todoModal"
+          class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            New todo
+      </button>
+    </div>
+  </div>
+
+  <!-- Add the modal structure -->
+  <div class="modal fade" id="todoModal" tabindex="-1" aria-labelledby="todoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <%= render "modal" %>
+      </div>
+    </div>
   </div>
 
   <hr class="mb-4 mt-4 outline-black"/>
 
     <div id="todos" class="space-y-4 mb-8">
       <% @todos.each do |todo| %>
-          <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition duration-200 mb-4 <%= todo.completed == 1 ? 'opacity-60' : '' %>">
+          <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition duration-200 mb-4 <%= todo.completed == 1 ? 'opacity-60 scale-60:' : '' %>">
           <%= render todo %>
           <div class="flex justify-end">
               <%= link_to "View details", todo,
